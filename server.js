@@ -30,6 +30,9 @@ app.use('/js',express.static(path.resolve(__dirname,"assets/js")))
 //load router
 app.use('/',require('./server/routes/router'))
 
-app.listen(3000,() => {
-    console.log(`Server running at port ${PORT}`);
-})
+// app.listen(3000,() => {
+//     console.log(`Server running at port ${PORT}`);
+// })
+app.listen(process.env.PORT || 3000, function(){
+    console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
+  });
