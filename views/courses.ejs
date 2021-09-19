@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="img/hamster.png">
+
+
+</head>
+    <header id='header'>
+      <ul>
+        <li><a href="/">Member</a></li>
+        <li><a href="/news">News</a></li>
+        <li><a href="/courses">Course</a></li>
+        <li><a href="/shop">Shop</a></li>
+        <li><a href="/app">App</a></li>
+      </ul>
+                </header>
+                <main id="site-main">
+          <!--form handing-->
+          <form action="/" method="POST">
+              <table border="1"> 
+                <!-- class="table" width="100%" border="1" -->
+                  <thead class="thead-dark">
+                      <tr>
+                          <th>ID</th>
+                          <th>Cover</th>
+                          <th>Author</th>
+                          <th>subject</th>
+                          <th>name</th>
+                          <th>tag</th>
+                          <th>price</th>
+                          <th>startdate</th>
+                          <th>age</th>
+                          <th>length</th>
+                          <th>detail</th>
+                          <th>date</th>
+                          <th>time</th>
+                          <th>Expire</th>
+                          <th>Discount</th>
+                          <th>Status</th>
+                          <th>remark</th>
+                          <th>gallery</th>
+                          <th>icon</th>
+                          <th>no</th>
+                      </tr>
+                  </thead>
+              </form>
+                  <tbody>
+
+                    <% for(var i =0; i<course.length;i++){ %>
+                          <tr>
+                            <form method="POST" id="update_course_<%= course[i]._id%>">           
+                            <input type="hidden" name="id" value="<%= course[i]._id %>">
+                            <td style="height:50px; width:50px"><%= i+1 %> </td>
+                            <td><input type="text" name="cover" value="<%= course[i].cover %>" style='width: 80px;'></td>
+                            <td><input type="text" name="subject" value="<%= course[i].subject %>" style='width: 250px;'></td>
+                            <td><input type="text" name = "name"value="<%= course[i].name%>"></td>
+                            <td><input type="text" name = "tag"value="<%= course[i].tag %>"style='width: 100px;'></td> 
+                            <td><input type="text" name="price" value="<%= course[i].price%>" style='width: 50px;'></td>
+                            <td><input type="text" name="startdate" value="<%= course[i].startdate%>" style='width: 120px;'></td>
+                            <td><input type="text" name="age" value="<%= course[i].age%>" style='width: 50px;'></td>
+                            <td><input type="text" name="length" value="<%= course[i].length%>" style='width: 30px;'></td>
+                            <td><input type="text" name="detail" value="<%= course[i].detail%>"></td>
+                            <td><input type="text" name="date" value="<%= course[i].date%>"></td>
+                            <td><input type="text" name="time" value="<%= course[i].time%>" style='width: 80px;'></td>
+                            <td><input type="text" name="remark" value="<%= course[i].remark%>"></td>
+                            <td><input type="text" name="gallery" value="<%= course[i].gallery%>"></td>
+                            <td><input type="text" name="icon" value="<%= course[i].icon%>" style='width: 80px;'></td>
+                            <td><input type="text" name="no" value="<%= course[i].no%>" style='width: 50px;'></td>
+                          
+                              <td> 
+                                <div class="form-group">
+                                    <a href="#"class="btn border-shadow update">
+                                    <button onclick="handle_submit_form('<%= course[i]._id%>')" type="button" class="btn text-dark update">Save</button>
+                                    <!-- <a href="/update-user?id=<%= course[i]._id %>" class="btn border-shadow update"></a> -->
+                                </div>
+                                  
+                              </td>
+                          </tr>
+                          </form>
+                         <% } %> 
+                      
+                  </tbody>
+              </table>
+              <!-- <form action="/api/users" method="POST" id="update_user">
+                  <div class="form-group">
+                  <button type="submit" class="btn text-dark update">Save</button>
+                  </div>
+              </form> -->
+        
+      </div>
+    </main>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+      <script src="js/course.js"></script>
+      
+      
+      </body>
+      </html>

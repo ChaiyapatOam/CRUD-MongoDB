@@ -1,33 +1,39 @@
-var Userdb = require('../model/model')
-//create and save new user
+const Courses = require('../model/courses')
+var courses = require('../model/courses')
+
 exports.create=(req,res) => {
     if(!req.body){
         res.status(400).send({ message:"content can't empty"})
         return
     }
 
-    const user = new Userdb({
-        discord:req.params.id,
+    const course = new Courses({
+        cover:req.body.cover,
+        subject:req.body.subject,
         name:req.body.name,
+        tag:req.body.tag,
+        price:req.body.price,
+        startdate:req.body.startdate,
         age:req.body.age,
-        mobile:req.body.mobile,
-        email:req.body.email,
-        nickname:req.body.nickname,
-        interest:req.body.interest,
-        experince:req.body.experince,
-        goal:req.body.goal,
-        courses:req.body.courses,
-        stat:req.body.stat,
+        length:req.body.length,
+        detail:req.body.detail,
+        date:req.body.date,
+        time:req.body.time,
+        remark:req.body.remark,
+        gallery:req.body.gallery,
         coin:req.body.coin,
         code:req.body.code,
         remark:req.body.remark,
+        gallery:req.body.gallery,
+        icon:req.body.icon,
+        no:req.body.no,
     })
 
-    user
-    .save(user)
+    course
+    .save(course)
     .then(data=>{
         res.send(data)
-        res.redirect('/add-user')
+        res.redirect('/add-course')
     })
     .catch(err => {
         res.status(500).send({
@@ -41,10 +47,10 @@ exports.find=(req,res)=>{
     if(req.query.id){
         const id = req.query.id
 
-        Userdb.findById(id)
+        Courses.findById(id)
         .then(data=> {
             if(!data){
-                res.status(404).send({message:`Not found user with id  ${id}`})
+                res.status(404).send({message:`Not found course with id  ${id}`})
             }else{
                 res.send(data)
             }
@@ -54,12 +60,12 @@ exports.find=(req,res)=>{
                 })
 
     }else{
-        Userdb.find()
-        .then(user => {
-            res.send(user)
+        Courses.find()
+        .then(course => {
+            res.send(course)
         })
         .catch(err => {
-            res.status(500).send({message:err.message} || "Error Occurred User Information")
+            res.status(500).send({message:err.message} || "Error Occurred course Information")
         })
     }
 }
@@ -72,7 +78,7 @@ exports.update=(req,res)=>{
     }
 
     const id = req.params.id
-    Userdb.findByIdAndUpdate(id,req.body,{useFindAndModify:false})
+    Courses.findByIdAndUpdate(id,req.body,{useFindAndModify:false})
     .then(data => {
         if(!data){
             res.status(404).send({message:`Cannot update user with ${id} Maybe user not found`})
@@ -84,25 +90,5 @@ exports.update=(req,res)=>{
     })
     .catch(err=> {
         res.status(500).send({message:"Error Update user infomation"})
-    })
-}
-
-exports.delete=(req,res)=>{
-    const id = req.params.id
-
-    Userdb.findByIdAndDelete(id)
-    .then(data=>{
-        if(!data){
-            res.status(404).send({message:`Cannot Delete with id ${id} maybe id is wrong`})
-        }else{
-            res.send({
-                message:"User was deleted successfully!!"
-            })
-        }
-    })
-    .catch(err=> {
-        res.status(500).send({
-            message:"Could not delete user with id  " + id
-        })
     })
 }

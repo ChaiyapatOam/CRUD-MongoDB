@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="img/hamster.png">
+
+
+</head>
+<body>
+    <header id='header'>
+        <ul>
+            <li><a href="/">Member</a></li>
+            <li><a href="/news">News</a></li>
+            <li><a href="/courses">Courses</a></li>
+            <li><a href="/shop">Shop</a></li>
+            <li><a href="/app">App</a></li>
+          </ul>
+            </header>
+                  <main id="site-main">
+          <!--form handing-->
+          <form action="/" method="POST">
+              <table  border="1">
+                  <thead class="thead-dark">
+                      <tr>
+                          <th>ID</th>
+                          <th>Product</th>
+                          <th>Status</th>
+                          <th>Description</th>
+                          <th>Coin</th>
+                          <th>Gallery</th>
+                          <th>Expire</th>
+                          <th>Save</th>
+                      </tr>
+                  </thead>
+              </form>
+              <tbody>
+
+                <% for(var i =0; i<shop.length;i++){ %>
+                      <tr>
+                        <form method="POST" id="update_shop_<%= shop[i]._id%>">           
+                        <input type="hidden" name="id" value="<%= shop[i]._id %>">
+                        <td style="height:50px; width:50px"><%= i+1 %> </td>
+                        <td><input type="text" name="product" value="<%= shop[i].product %>"style='width: 100px;'></td> 
+                        <td><input type="text" name="coin" value="<%= shop[i].coin%>" style='width: 50px;'></td>
+                        <td><input type="text" name="gallery" value="<%= shop[i].gallery%>"></td>
+
+                      
+                          <td> 
+                            <div class="form-group">
+                                <a href="#"class="btn border-shadow update">
+                                <button onclick="handle_submit_form('<%= shop[i]._id%>')" type="button" class="btn text-dark update">Save</button>
+                                <!-- <a href="/update-user?id=<%= shop[i]._id %>" class="btn border-shadow update"></a> -->
+                            </div>
+                              
+                          </td>
+                      </tr>
+                      </form>
+                     <% } %> 
+                  
+              </tbody>
+              </table>
+              <!-- <form action="/api/users" method="POST" id="update_user">
+                  <div class="form-group">
+                  <button type="submit" class="btn text-dark update">Save</button>
+                  </div>
+              </form> -->
+        
+      </div>
+      </main>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+      <script src="js/shop.js"></script>
+      
+      
+      </body>
+      </html>

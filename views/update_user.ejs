@@ -2,7 +2,7 @@
 <%- include('include/_header') %> 
 
 <!--Main Site-->
-<main id="site-main">
+<!-- <main id="site-main">
     <div class="container">
         <div class="box-nav d-flex-justify-between">
             <div class="filter">
@@ -11,7 +11,7 @@
         </div>
         <div class="form-title text-center">
             <h2 class="text-dark">Update User</h2>
-            <span class="text-light">Use the below to Update a new account</span>
+            <span class="text-light">Use the below to Update account</span>
         </div>
 
         <form method="POST" id="update_user">
@@ -57,7 +57,87 @@
         </form>
 
     </div>
+</main> -->
+<!-- include header -->
+
+
+<!--Main Site-->
+<main id="site-main">
+    <div class="container" style="overflow-x:auto;">
+        <div class="box-nav d-flex-justify-between">
+            <!-- <a href="/add-user" class="border-shadow">
+            <span class="text-gradient">
+                New User<i class="fas fa-user"></i>
+            </span>
+                </a> -->
+        <!--form handing-->
+        <form action="/" method="POST">
+            <table class="table" width="100%" border="1">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Discord ID</th>
+                        <th>Name</th>
+                        <th>age</th>
+                        <th>Email</th>
+                        <th>mobile</th>
+                        <th>Nickname</th>
+                        <th>Interest</th>
+                        <th>Experince</th>
+                        <th>Goal</th>
+                        <th>Courses</th>
+                        <th>Stat</th>
+                        <th>Coin</th>
+                        <th>Code</th>
+                        <th>Remark</th>
+                        <th>Save</th>
+                    </tr>
+                </thead>
+            </form>
+                <tbody>
+                    <form method="POST" id="update_user">
+                    <% for(var i =0; i<user.length;i++){ %>  
+                        <tr>
+                            <td><%= user[i]._id %></td> 
+                            <td><input type="text" value="<%= user[i].name %>"></td>
+                            <td><input type="text" value="<%= user[i].age%>"></td>
+                            <td><input type="text" value="<%= user[i].email %>"></td> 
+                            <td><input type="text" value="<%= user[i].mobile%>"></td>
+                            <td><input type="text" value="<%= user[i].nickname%>"></td>
+                            <td><input type="text" value="<%= user[i].interest%>"></td>
+                            <td><input type="text" value="<%= user[i].experince%>"></td>
+                            <td><input type="text" value="<%= user[i].goal%>"></td>
+                            <td><input type="text" value="<%= user[i].courses%>"></td>
+                            <td><input type="text" value="<%= user[i].stat%>"></td>
+                            <td><input type="text" value="<%= user[i].coin%>"></td>
+                            <td><input type="text" value="<%= user[i].code%>"></td>
+                            <td><input type="text" value="<%= user[i].remark%>"></td>
+                        
+                            <td> 
+                                 <a href="/update-user?id=<%= user[i]._id %>" class="btn border-shadow update">
+                                    <span class="text-gradient"><i class="fas fa-pencil-alt"></i></span>
+                                </a> 
+                                <div class="form-group">
+                                    <a href="/api/users/<%= users[i]._id %>" class="btn border-shadow update">
+                                    <button type="submit" class="btn text-dark update">Save</button>
+                                    <!-- <a href="/update-user?id=<%= users[i]._id %>" class="btn border-shadow update"></a> -->
+                                </div>
+                                <!-- Delete -->
+                                <!-- <a class="btn border-shadow delete" data-id=<%= users[i]._id %> >
+                                    <span class="text-gradient"><i class="fas fa-times"></i></span>
+                                </a> -->
+                            </td>
+                        </tr>
+                        <% } %> 
+                </tbody>
+            </table>
+            <!-- <form action="/api/users" method="POST" id="update_user">
+                <div class="form-group">
+                <button type="submit" class="btn text-dark update">Save</button>
+                </div>
+            </form> -->
+      
+    </div>
 </main>
-<!--/Main Site-->
+<!--/Main Site--> 
 
 <%- include('include/_footer') %> 

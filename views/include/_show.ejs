@@ -1,15 +1,32 @@
 <% for(var i =0; i<users.length;i++){ %>  
 <tr>
-    <td><%= i + 1 %> </td>
-    <td><%= users[i].name %></td>
-    <td><%= users[i].email %></td>
-    <td><%= users[i].gender %></td>
-    <td><%= users[i].status %></td>
-    <td>Stasusdfs</td>
-    <td>
-        <a href="/update-user?id=<%= users[i]._id %>" class="btn border-shadow update">
+    <td><%= users[i]._id %></td> 
+    <td><input type="text" value="<%= users[i].name %>"></td>
+    <td><input type="text" value="<%= users[i].age%>"></td>
+    <td><input type="text" value="<%= users[i].email %>"></td> 
+    <td><input type="text" value="<%= users[i].mobile%>"></td>
+    <td><input type="text" value="<%= users[i].nickname%>"></td>
+    <td><input type="text" value="<%= users[i].interest%>"></td>
+    <td><input type="text" value="<%= users[i].experince%>"></td>
+    <td><input type="text" value="<%= users[i].goal%>"></td>
+    <td><input type="text" value="<%= users[i].courses%>"></td>
+    <td><input type="text" value="<%= users[i].stat%>"></td>
+    <td><input type="text" value="<%= users[i].coin%>"></td>
+    <td><input type="text" value="<%= users[i].code%>"></td>
+    <td><input type="text" value="<%= users[i].remark%>"></td>
+
+    <td> 
+        <!-- <a href="/update-user?id=<%= users[i]._id %>" class="btn border-shadow update">
             <span class="text-gradient"><i class="fas fa-pencil-alt"></i></span>
-        </a>
+        </a> -->
+        <div class="form-group">
+            
+            <button type="submit" class="btn text-dark update">Save
+                <a href="/api/users/<%= users[i]._id %>" class="btn border-shadow update"></a>
+            </button>
+            <!-- <a href="/update-user?id=<%= users[i]._id %>" class="btn border-shadow update"></a> -->
+        </div>
+        <!-- Delete -->
         <a class="btn border-shadow delete" data-id=<%= users[i]._id %> >
             <span class="text-gradient"><i class="fas fa-times"></i></span>
         </a>

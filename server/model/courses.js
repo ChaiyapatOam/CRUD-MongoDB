@@ -1,50 +1,47 @@
 const mongoose = require('mongoose')
 
 var schema = new mongoose.Schema({
+    cover:{
+        type:String,
+        required:true
+    },
+    subject:{
+        type:String,
+        required:true
+    },
     name:{
         type:String,
         required:true
     },
-    age:{
-        type:Number,
-        required:true
-    },
-    mobile:{
-        type:Number,
-        required:true
-    },
-    email:{
+    tag:{
         type:String,
         required:true,
-        unique:true
     },
-    nickname:{
+    price:{
         type:String,
         required:true
     },
-    interest:{
+    startdate:{
         type:String,
         required:true
     },
-    experince:{
+    age:{
         type:String,
         required:true
     },
-    goal:{
+    length:{
         type:String,
         required:true
     },
-    courses:{
-        type:Array,
-        "default":[]
-    },
-    stat:[{
-    }],
-    coin:{
+    detail:{
         type:String,
         required:true
     },
-    code:{
+    date:{
+        type:String,
+        required:true
+    },
+    time:{
         type:String,
         required:true
     },
@@ -52,10 +49,21 @@ var schema = new mongoose.Schema({
         type:String,
         required:true
     },
-    // gender:String,
-    // status:String
+    gallery:{
+        type:String,
+        required:true
+    },
+    icon:{
+        type:String,
+        required:true
+    },
+    no:{
+        type:String,
+        required:true
+    }
+
 })
 
-const Userdb = mongoose.model('userdb',schema)
+const Courses = mongoose.model('Courses',schema)
 
-module.exports = Userdb
+module.exports = Courses

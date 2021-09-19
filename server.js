@@ -17,6 +17,8 @@ connectDB()
 
 //parse request to bodyparser
 app.use(bodyparser.urlencoded({ extended: true }))
+app.use(bodyparser.json())
+app.use(bodyparser.json({ type: 'application/*+json' }))
 
 app.set('view engine','ejs')
 //app.set('views',path.resolve(__dirname,"views/ejs"))
@@ -30,9 +32,10 @@ app.use('/js',express.static(path.resolve(__dirname,"assets/js")))
 //load router
 app.use('/',require('./server/routes/router'))
 
+
 // app.listen(3000,() => {
 //     console.log(`Server running at port ${PORT}`);
 // })
 app.listen(process.env.PORT || 3000, function(){
-    console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
+    console.log("Express server listening on port %d  http://localhost:3000/", this.address().port);
   });

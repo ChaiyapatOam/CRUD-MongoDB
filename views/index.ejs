@@ -4,36 +4,90 @@
 
 <!--Main Site-->
 <main id="site-main">
-    <div class="container">
-        <div class="box-nav d-flex-justify-between">
-            <a href="/add-user" class="border-shadow">
-            <span class="text-gradient">
-                New User<i class="fas fa-user"></i>
-            </span>
-                </a>
-        </div>
+    <div class="container" style="overflow-x:auto;">
         <!--form handing-->
         <form action="/" method="POST">
-            <table class="table">
+            <table border="1">
                 <thead class="thead-dark">
                     <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>@Email</th>
-                        <th>Gender</th>
-                        <th>Status</th>
-                        <th>Status</th>
-                        <th>Action</th>
+                        <th id="Discord">ID</th>
+                        <th id="Name">Name</th>
+                        <th id="Name">nickname</th>
+                        <th id="age">age</th>
+                        <th>Email</th>
+                        <th>mobile</th>
+                        <th>Coin</th>
+                        <th>Interest</th>
+                        <th>Experience</th>
+                        <th>Goal</th>
+                        <th>Course</th>
+                        <th>Stat</th>
+                        <th>Code</th>
+                        <th>Remark</th>
+                        <th>Save</th>
                     </tr>
                 </thead>
+            </form>
                 <tbody>
-                    <%- include('include/_show') %> 
+                    <% for(var i =0; i<users.length;i++){ %>  
+                        <tr>
+
+                            <form method="POST" id="update_user_<%= users[i]._id%>">
+                                <div class="form-group">
+                            <!-- <td><%= users[i]._id %><input type="hidden" name="id" value="<%= users[i]._id %>"/></td>  -->
+                            <td style="height:50px; width:50px"><%= i+1 %> </td>
+                            <td style="height:50px; width:50px">
+                                <input type="text" name="name" value="<%= users[i].name %>" style='width: 100px;'></td>
+                            <td style="height:50px; width:50px">
+                                <input type="text" name="nickname" value="<%= users[i].nickname%>" style='width: 60px;'></td>
+                            <td >
+                                <input type="text" name = "age"value="<%= users[i].age%>" style='width: 30px;'></td>
+                            <td>
+                                <input type="text" name = "email"value="<%= users[i].email %>"></td> 
+                            <td>
+                                <input type="text" name="mobile" value="<%= users[i].mobile%>" style='width: 120px;'></td>
+                            <td>
+                                <input type="text" name="coin" value="<%= users[i].coin%>" style='width: 50px;'></td>
+                            <td>
+                                <input type="text" name="interest" value="<%= users[i].interest%>" style='width: 120px;'></td>
+                            <td>
+                                <input type="text" name="experince" value="<%= users[i].experince%>" style='width: 100px;'></td>
+                            <td>
+                                <input type="text" name="goal" value="<%= users[i].goal%>" style='width: 100px;'></td>
+                            <td><input type="text" name="courses" value="<%= users[i].courses%>" style='width: 100px;'></td>
+                            <td><input type="text" name="stat" value="<%= users[i].stat%>" style='width: 90px;'></td>                            
+                            <td><input type="text" name="code" value="<%= users[i].code%>" style='width: 50px;'></td>
+                            <td><input type="text" name="remark" value="<%= users[i].remark%>" style='width: 30px;'></td>
+                                </div>
+                            <td> 
+                                 <!-- <a href="/update-user?id=< % = users[i]._id %>" class="btn border-shadow update">
+                                    <span class="text-gradient"><i class="fas fa-pencil-alt"></i></span>
+                                </a>  -->
+                                <div class="form-group">
+                                    <!-- <a href="#"class="btn border-shadow update"> -->
+                                    <button onclick="handle_submit_form('<%= users[i]._id%>')" type="button" class="btn text-dark update">Save</button>
+                                    <!-- <a href="/update-user?id=<%= users[i]._id %>" class="btn border-shadow update"></a> -->
+                                </div>
+                                
+                            </td>
+                        </tr>
+                        </form>
+                        <% } %> 
                 </tbody>
             </table>
-        </form>
+            <!-- <form action="/api/users" method="POST" id="update_user">
+                <div class="form-group">
+                <button type="submit" class="btn text-dark update">Save</button>
+                </div>
+            </form> -->
     </div>
 </main>
 <!--/Main Site-->
 
 
+
 <%- include('include/_footer') %> 
+<!-- Delete -->
+  <!-- <a class="btn border-shadow delete" data-id=< % = users[i]._id %> >
+     <span class="text-gradient"><i class="fas fa-times"></i></span>                               
+         </a> -->                                                     
