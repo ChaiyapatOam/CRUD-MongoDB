@@ -10,10 +10,10 @@
             <table border="1">
                 <thead class="thead-dark">
                     <tr>
-                        <th id="Discord">ID</th>
-                        <th id="Name">Name</th>
-                        <th id="Name">nickname</th>
-                        <th id="age">age</th>
+                        <th >ID</th>
+                        <th >Name</th>
+                        <th >nickname</th>
+                        <th >age</th>
                         <th>Email</th>
                         <th>mobile</th>
                         <th>Coin</th>
@@ -24,6 +24,7 @@
                         <th>Stat</th>
                         <th>Code</th>
                         <th>Remark</th>
+                        <th>Discord ID</th>
                         <th>Save</th>
                     </tr>
                 </thead>
@@ -34,8 +35,8 @@
 
                             <form method="POST" id="update_user_<%= users[i]._id%>">
                                 <div class="form-group">
-                            <!-- <td><%= users[i]._id %><input type="hidden" name="id" value="<%= users[i]._id %>"/></td>  -->
-                            <td style="height:50px; width:50px"><%= i+1 %> </td>
+                            <td style="height:50px; width:50px"><%= i+1 %><input type="hidden" name="id" value="<%= users[i]._id %>"/></td>
+                            <!-- <td style="height:50px; width:50px"><%= i+1 %> </td> -->
                             <td style="height:50px; width:50px">
                                 <input type="text" name="name" value="<%= users[i].name %>" style='width: 100px;'></td>
                             <td style="height:50px; width:50px">
@@ -64,7 +65,7 @@
                                     <span class="text-gradient"><i class="fas fa-pencil-alt"></i></span>
                                 </a>  -->
                                 <div class="form-group">
-                                    <!-- <a href="#"class="btn border-shadow update"> -->
+                                    <a href="#"class="btn border-shadow update">
                                     <button onclick="handle_submit_form('<%= users[i]._id%>')" type="button" class="btn text-dark update">Save</button>
                                     <!-- <a href="/update-user?id=<%= users[i]._id %>" class="btn border-shadow update"></a> -->
                                 </div>

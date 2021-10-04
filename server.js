@@ -36,6 +36,6 @@ app.use('/',require('./server/routes/router'))
 // app.listen(3000,() => {
 //     console.log(`Server running at port ${PORT}`);
 // })
-app.listen(process.env.PORT || 3000, function(){
+app.listen(PORT , function(){
     console.log("Express server listening on port %d  http://localhost:3000/", this.address().port);
   });
